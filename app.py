@@ -56,6 +56,14 @@ def add_meme():
 
     return jsonify("MEME POSTED")
 
+# GET
+@app.route("/memes", methods=["GET"])
+def get_memes():
+    all_memes = Meme.query.all()
+    result = memes_schema.dump(all_memes)
+
+    return jsonify(result)
+
 
 
 if __name__ == "__main__":
